@@ -8,6 +8,7 @@ router.post('/register', register);
 router.get('/', getAll);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
+router.post('/typeAssign', typeAssign);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -21,6 +22,12 @@ function authenticate(req, res, next) {
 
 function register(req, res, next) {
     userService.create(req.body)
+        .then(() => res.json({}))
+        .catch(err => next(err));
+}
+
+function typeAssign(req, res, next) {
+    userService.type(req.body)
         .then(() => res.json({}))
         .catch(err => next(err));
 }

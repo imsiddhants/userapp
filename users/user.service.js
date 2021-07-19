@@ -3,13 +3,14 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const User = db.User;
+const Type = db.Type;
 
 module.exports = {
     authenticate,
     getAll,
     getById,
     create,
-    createMember,
+    type,
     update,
     delete: _delete
 };
@@ -39,7 +40,8 @@ async function create(userParam) {
         throw 'Username "' + userParam.username + '" is already taken';
     }
 
-    const user = new User(userParam,{... req.body,owner: req.user._id});
+    const user = new User(userParam);
+    // {... req.body,owner: req.user._id}
 
 
     // hash password
@@ -51,6 +53,10 @@ async function create(userParam) {
     await user.save();
 }
 
+async function type(userParam){
+    const type = new Type(userParam);
+    await type.save();
+}
 
 async function update(id, userParam) {
     const user = await User.findById(id);
