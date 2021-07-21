@@ -8,7 +8,7 @@ router.post('/register', register);
 router.get('/', getAll);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
-router.post('/typeAssign', typeAssign);
+router.post('/typeassign', typeassign);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
@@ -26,7 +26,7 @@ function register(req, res, next) {
         .catch(err => next(err));
 }
 
-function typeAssign(req, res, next) {
+function typeassign(req, res, next) {
     userService.type(req.body)
         .then(() => res.json({}))
         .catch(err => next(err));

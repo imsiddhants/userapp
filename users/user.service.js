@@ -53,8 +53,8 @@ async function create(userParam) {
     await user.save();
 }
 
-async function type(userParam){
-    const type = new Type(userParam);
+async function type(typeParam){
+    const type = new Type(typeParam);
     await type.save();
 }
 

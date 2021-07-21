@@ -6,6 +6,7 @@ const schema = new Schema({
     members : [{
         type: mongoose.Schema.Type.ObjectId,
     }],
+    _user : {type: mongoose.Schema.Type.ObjectId}
 });
 
 schema.set('toJSON', {
