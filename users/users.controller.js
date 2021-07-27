@@ -27,7 +27,7 @@ function register(req, res, next) {
 }
 
 function typeassign(req, res, next) {
-    userService.type(req.body)
+    userService.team(req.body)
         .then(() => res.json({}))
         .catch(err => next(err));
 }

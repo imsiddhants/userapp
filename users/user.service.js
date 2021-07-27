@@ -3,14 +3,14 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const User = db.User;
-const Type = db.Type;
+const Team = db.Team;
 
 module.exports = {
     authenticate,
     getAll,
     getById,
     create,
-    type,
+    team,
     update,
     delete: _delete
 };
@@ -53,9 +53,9 @@ async function create(userParam) {
     await user.save();
 }
 
-async function type(typeParam){
-    const type = new Type(typeParam);
-    await type.save();
+async function team(teamParam){
+    const team = new Team(teamParam);
+    await team.save();
 }
 
 async function update(id, userParam) {
